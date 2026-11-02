@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Simón dice por Luis Reyes</title>
+</head>
+<link rel="stylesheet" type="text/css" href="juego.css">
+</head>
+
+<body>
+    <header class="intro">
+        <h1 class="juego-titulo">Simón dice</h1>
+        <p>Memoriza la secuencia de colores que reproduce la máquina y repítela en el mismo orden. Cada nivel añade un color más; a partir del nivel 10 irá más rápido y en los niveles 15 y 20 aparecerán colores nuevos.</p>
+        <button class="btn-ranking" onclick="mostrarRanking()">Ranking e informes</button>
+    </header>
+    <div class="title">
+        <h1 id="level" class="level" >Nivel: 0</h1>
+        <h1 id="score" class="score" >Puntuación: 0</h1>
+        <h1 id="top-score" class="top-score" >Puntuación Máxima: 0</h1>
+    </div>
+    <div id="estado" class="estado"></div>
+    <div id="tablero" class="gameboard">
+        <div id="azul" class="color azul left" data-color="azul">
+            <div class="borde borde-azul"></div>
+        </div>
+        <div id="rojo" class="color rojo right" data-color="rojo">
+            <div class="borde borde-rojo"></div>
+        </div>
+        <div id="amarillo" class="color amarillo left" data-color="amarillo">
+            <div class="borde borde-amarillo"></div>
+        </div>
+        <div id="verde" class="color verde right" data-color="verde">
+            <div class="borde borde-verde"></div>
+        </div>
+        <div id="naranja" class="color naranja left oculto" data-color="naranja">
+            <div class="borde borde-naranja"></div>
+        </div>
+        <div id="morado" class="color morado right oculto" data-color="morado">
+            <div class="borde borde-morado"></div>
+        </div>
+        <div id="rosa" class="color rosa left oculto" data-color="rosa">
+            <div class="borde borde-rosa"></div>
+        </div>
+        <div id="cian" class="color cian right oculto" data-color="cian">
+            <div class="borde borde-cian"></div>
+        </div>
+        <button id="btnEmpezar" class="btn-start animation show" onclick="empezarJuego()">Empezar a jugar!</button>
+    </div>
+    
+    <script src="sweetalert.min.js"></script>
+    <script src="almacenamiento.js"></script>
+    <script src="juego.js"></script>
+
+    
+</body>
+</html>

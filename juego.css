@@ -1,0 +1,379 @@
+* {
+  font-family: "Arial", "Helvetica", "sans-serif"; }
+
+body {
+    margin: 0;
+    background: #dedede;
+    display: flex;
+    align-items: center;
+    height: 100vh; 
+    flex-wrap: wrap;
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}  
+
+.source-code{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.level , .score , .top-score{
+    padding: 10px;
+}
+
+.gameboard {
+  height: 100vh;
+  width: 100vh;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  max-height: 60vh;
+  max-width: 60vh; }
+
+.color {
+  cursor: pointer;
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+  transition: .5s; }
+
+.borde {
+  pointer-events: none;
+  width: 100%;
+  height: calc( 100% - 4px ); }
+
+.left {
+  float: left; }
+
+.right {
+  float: left; }
+
+.azul {
+  background: #053085; }
+
+.borde-azul {
+  border-bottom: 4px solid #03215c; }
+
+.azul.light {
+  background: #4da3ff; }
+
+.azul.light .borde-azul {
+  border-bottom: 4px solid #2878c7; }
+
+.rojo {
+  background: #c0392b; }
+
+.borde-rojo {
+  border-bottom: 4px solid #7f241c; }
+
+.rojo.light {
+  background: #ff6b5f; }
+
+.rojo.light .borde-rojo {
+  border-bottom: 4px solid #c94f46; }
+
+.amarillo {
+  background: #f1c40f; }
+
+.borde-amarillo {
+  border-radius: 0px 0px 0px 100%;
+  border-bottom: 4px solid #9a7b08;
+  border-left: 4px solid #9a7b08; }
+
+.amarillo.light {
+  background: #ffe66d; }
+
+.amarillo.light .borde-amarillo {
+  border-bottom: 4px solid #c9ad35;
+  border-left: 4px solid #c9ad35; }
+
+.verde {
+  background: #27ae60; }
+
+.borde-verde {
+  width: calc( 100% - 4px );
+  border-radius: 0px 0px 100% 0px;
+  border-bottom: 4px solid #197a43;
+  border-right: 4px solid #197a43; }
+
+.verde.light {
+  background: #58d68d; }
+
+.verde.light .borde-verde {
+  border-bottom: 4px solid #3ca968;
+  border-right: 4px solid #3ca968; }
+
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 1;
+    display: block; }
+  to {
+    display: none;
+    opacity: 0; } }
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    display: block; }
+  to {
+    display: none;
+    opacity: 0; } }
+@-webkit-keyframes fadeIn {
+  from {
+    display: none;
+    opacity: 0; }
+  to {
+    opacity: 1;
+    display: block; } }
+@keyframes fadeIn {
+  from {
+    display: none;
+    opacity: 0; }
+  to {
+    opacity: 1;
+    display: block; } }
+
+.btn-start {
+    transition: display 2s;
+    -webkit-transition: display 2s;
+    transition: visibility 1s;
+    -webkit-transition: visibility 1s;
+    cursor: pointer;
+    width: 420px;
+    height: 100px;
+    background: #ecf0f1;
+    color: #2c3e50;
+    border: none;
+    border-bottom: 4px solid #c4c6c7;
+    border-radius: 8px;
+    font-size: 3em;
+    position: absolute;
+    top: calc(50% + 50px);
+    left: calc(50% - 210px);
+    transition: .5s;
+    outline: none; 
+}
+
+.btn-start:hover {
+  color: #ecf0f1;
+  background: #2c3e50;
+  border-bottom: 4px solid #1f3346; }
+
+.btn-start:active {
+  transform: scale(0.95); }
+
+.animation {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both; }
+
+.hide {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+  visibility: hidden; }
+
+.show {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  visibility: visible; }
+
+
+/* ============================================================
+   Añadidos: cabecera, estado del turno, colores extra, errores
+   ============================================================ */
+.intro {
+  width: 100%;
+  text-align: center;
+  padding: 8px 130px 0;
+  box-sizing: border-box; }
+
+.intro .juego-titulo {
+  margin: 0;
+  font-size: 1.8em; }
+
+.intro p {
+  margin: 4px auto 0;
+  max-width: 720px;
+  color: #444;
+  font-size: .95em; }
+
+.btn-ranking {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 8px 14px;
+  cursor: pointer;
+  background: #2c3e50;
+  color: #ecf0f1;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em; }
+
+.btn-ranking:hover {
+  background: #1f3346; }
+
+.estado {
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #2c3e50; }
+
+.estado.error {
+  color: #e00000; }
+
+/* Colores extra (niveles 15 y 20) */
+.color.oculto {
+  display: none; }
+
+.naranja {
+  background: #e67e22; }
+
+.borde-naranja {
+  border-bottom: 4px solid #a85a12; }
+
+.naranja.light {
+  background: #ffb066; }
+
+.naranja.light .borde-naranja {
+  border-bottom: 4px solid #cc7a30; }
+
+.morado {
+  background: #8e44ad; }
+
+.borde-morado {
+  border-bottom: 4px solid #5e2c75; }
+
+.morado.light {
+  background: #c58be0; }
+
+.morado.light .borde-morado {
+  border-bottom: 4px solid #9a64b5; }
+
+.rosa {
+  background: #e84393; }
+
+.borde-rosa {
+  border-bottom: 4px solid #a02a68; }
+
+.rosa.light {
+  background: #ff8cc6; }
+
+.rosa.light .borde-rosa {
+  border-bottom: 4px solid #cc5f9a; }
+
+.cian {
+  background: #00a8c4; }
+
+.borde-cian {
+  border-bottom: 4px solid #00707f; }
+
+.cian.light {
+  background: #6df0ff; }
+
+.cian.light .borde-cian {
+  border-bottom: 4px solid #3ec0d0; }
+
+/* Tablero rectangular con 6 u 8 colores */
+.gameboard.colores-6,
+.gameboard.colores-8 {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  max-height: none;
+  max-width: none;
+  border-radius: 24px; }
+
+.gameboard.colores-6 {
+  width: min(90vh, 95vw);
+  aspect-ratio: 3 / 2; }
+
+.gameboard.colores-8 {
+  width: min(120vh, 95vw);
+  aspect-ratio: 2 / 1; }
+
+.gameboard.colores-6 .color {
+  width: 33.3333%;
+  height: 50%; }
+
+.gameboard.colores-8 .color {
+  width: 25%;
+  height: 50%; }
+
+.gameboard.colores-6 .borde,
+.gameboard.colores-8 .borde {
+  width: 100% !important;
+  border-radius: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important; }
+
+/* Velocidad alta (desde el nivel 10): la luz se enciende y apaga más rápido */
+.gameboard.rapido .color {
+  transition: .12s; }
+
+/* El jugador no puede hacer clic mientras juega la máquina */
+.gameboard.bloqueado .color {
+  cursor: not-allowed; }
+
+/* Errores en rojo */
+.color.error {
+  position: relative;
+  transition: none;
+  background: #ff0000 !important;
+  animation: sacudir .4s; }
+
+.color.error::after {
+  content: "\2715";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 4em; }
+
+@keyframes sacudir {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); } }
+
+.swal-error .swal-title,
+.swal-error .swal-text {
+  color: #c0392b; }
+
+/* Ventana de ranking e informes */
+.panel-ranking {
+  text-align: left;
+  max-height: 55vh;
+  overflow-y: auto; }
+
+.panel-ranking h3 {
+  margin: 10px 0 4px; }
+
+.panel-ranking ul {
+  margin: 0;
+  padding-left: 20px; }
+
+.panel-ranking table.ranking {
+  width: 100%;
+  border-collapse: collapse; }
+
+.panel-ranking table.ranking th,
+.panel-ranking table.ranking td {
+  padding: 4px 6px;
+  border-bottom: 1px solid #ddd;
+  text-align: left; }
+
+.panel-ranking .origen {
+  font-size: .8em;
+  color: #777; }
